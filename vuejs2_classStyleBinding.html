@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .red {color: red;}
+        .bold {font-weight: bold;}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        샘플 텍스트 : <span :class="[isRed ? 'red' : '', isBold ? 'bold' : '']">이 텍스트가 바뀝니다</span> <br>
+        <!-- // 아래 코드로 대체 가능
+        샘플 텍스트 : <span :class="textStyle">이 텍스트가 바뀝니다</span> <br>
+        샘플 텍스트 : <span :class="{ 'red':isRed, 'bold':isBold }">이 텍스트가 바뀝니다</span> <br> -->
+        <button type="button" @click="changeColor()">빨간색</button>
+        <button type="button" @click="changeWeight()">진하게</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                isRed: false,
+                isBold: false
+            },
+            methods: {
+                changeColor() {
+                    this.isRed = !this.isRed;
+                },
+                changeWeight() {
+                    this.isBold = !this.isBold;
+                },
+
+            },
+
+         
+        })
+    </script>
+</body>
+
+</html>

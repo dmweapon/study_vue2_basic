@@ -1,0 +1,32 @@
+<form @submit.prevent="submitForm" class="form" enctype="multipart/form-data">
+    <div>
+        <span><b>Title</b></span>
+        <input type="text" placeholder="Title" v-model="title">
+    </div>
+    <div>
+        <span><b>Authors</b></span>
+        <input type="text" placeholder="Authors" v-model="author">
+        <button type="button" @click="addAuthor" class="addBtn">Add</button>
+    </div>
+    <div class="authorsPreview" v-for="item in authors" :key="item.index">
+        <span class="createdAuthor">{{ item.author }}</span>
+    </div>
+    <div>
+        <span><b>Publisher</b></span>
+        <input type="text" placeholder="Publisher" v-model="publisher">
+    </div>
+    <div>
+        <label for="inputGroupFile01" class="file"><b>Cover</b></label>
+        <input type="text" id="coverRoute" placeholder="Cover" disabled />
+        <button type="button" @click="findCover" class="addBtn">Add</button>
+        <input type="file" id="inputGroupFile01" ref="cover" style="display:none" @change="coverFileSelect">
+    </div>
+    <div>
+        <label for="inputGroupFile02"><b>Pages</b></label>
+        <input type="text" id="PagesRoute" placeholder="Pages" disabled />
+        <button type="button" @click="findPages" class="addBtn">Add</button>
+        <input type="file" id="inputGroupFile02" ref="pages" style="display:none" @change="pagesFileSelect" multiple>
+    </div>
+    <button type="submit">Submit</button>
+    <button type="button" class="clearBtn" @click="clearAll">Clear</button>
+</form>

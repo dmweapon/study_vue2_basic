@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        메시지 : {{ message }} <br>
+        <input id="ace" type="text">
+        <button type="button" @click="changeMessage()">입력값 출력</button><br>
+        메시지 변경여부 : {{ check }}
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: '초기텍스트',
+                check: '',
+            },
+            methods: {
+                changeMessage() {
+                    return this.message = document.getElementById('ace').value;
+                }
+            },
+            watch: {
+                message() {
+                    this.check = '변경됨'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

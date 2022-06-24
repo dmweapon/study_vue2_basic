@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        기관 : {{institute}} <br>
+        이름(나이) : {{person.name}} ({{person.age}}) <br>
+        {{nextYear('안녕하세요!')}} <br>
+        
+        <input v-bind:type="type" v-bind:value="inputData"> <br>
+        <!-- 위 코드가 바인딩하는 원본 코드, 아래 코드는 약식 표현, 값은 동일함 -->
+        <input :type="type" :value="inputData"> <br>
+
+        <a :href="getYoutubeLink('kossiecoder')">코지코더 채널</a>
+
+
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                institute: 'University',
+                person: {
+                    name: 'DMWEAPON',
+                    age: 123
+                },
+                inputData: 'hello',
+                type: 'text',
+                link: 'https://www.youtube.com/'
+
+
+            },
+            methods: {
+                // nextYear: function(greeting){   <-  아랫줄의 원래 모습
+                nextYear(greeting){
+                    return greeting + ' ' + this.person.name + '는 내년에 ' + (this.person.age + 1) + '살 입니다';
+                },
+                getYoutubeLink(channel){
+                    return this.link + channel;
+                },
+
+            }
+        })
+    </script>
+</body>
+
+</html>
