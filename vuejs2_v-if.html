@@ -7,17 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>뷰 기초 익히기</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <style>
-        .red {color: red;}
-        .bold {font-weight: bold;}
-    </style>
 </head>
 
 <body>
     <div id="app">
-        <div v-if="visibility">클릭하면 사라지는 텍스트</div>
         <div>
-            <button type="button" @click="textSwitch">Click</button>
+            <button type="button" @click="tabSelection(1)">텝1</button>
+            <button type="button" @click="tabSelection(2)">텝2</button>
+            <button type="button" @click="tabSelection(3)">텝3</button>
+        </div>
+        <div v-if="tab1">
+            <div>Tab1에 대한 텍스트 제목</div>
+            <div><p>Tab1에 대한 내용11111111111111111111111111</p></div>
+        </div>
+        <div v-if="tab2">
+            <div>Tab2에 대한 텍스트 제목</div>
+            <div><p>Tab2에 대한 내용22222222222222222222222222222</p></div>
+        </div>
+        <div v-if="tab3">
+            <div>Tab3에 대한 텍스트 제목</div>
+            <div><p>Tab3에 대한 내용333333333333333333333333333333</p></div>
         </div>
     </div>
 
@@ -25,16 +34,32 @@
         new Vue({
             el: '#app',
             data: {
-                visibility: true,
+               tab1: false,
+               tab2: false,
+               tab3: false,
             },
             methods: {
-                textSwitch() {
-                    this.visibility = !this.visibility;
+                tabSelection(num) {
+                    if (num === 1) {
+                        this.tab1 = true;
+                        this.tab2 = false;
+                        this.tab3 = false;
+                    }
+                    else if (num === 2) {
+                        this.tab1 = false;
+                        this.tab2 = true;
+                        this.tab3 = false;
+                    }
+                    else if (num === 3) {
+                        this.tab1 = false;
+                        this.tab2 = false;
+                        this.tab3 = true;
+                    }
                 },
 
             },
 
-         
+
         })
     </script>
 </body>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>수동으로 작성</div>
+        <div>
+            {{ people[0].name }} {{ people[0].age }}
+        </div>
+        <div>
+            {{ people[1].name }} {{ people[1].age }}
+        </div>
+        <div>
+            {{ people[2].name }} {{ people[2].age }}
+        </div>
+        <hr>
+        <div>v-for을 이용하여 자동작성</div>
+        <div v-for="person in people">
+        <!-- index값이 필요할 경우 <div v-for="(person, index) in people"> -->
+            {{ person.name }} {{ person.age }} <!-- {{ index }} -->
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+               people: [
+                {name: 'a1', age: 21},
+                {name: 'b2', age: 22},
+                {name: 'c3', age: 23},
+               ],
+
+            },
+            methods: {
+            },
+        })
+    </script>
+</body>
+
+</html>
