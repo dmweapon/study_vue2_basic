@@ -23,7 +23,7 @@
         </div>
         <hr>
         <div>v-for을 이용하여 자동작성</div>
-        <div v-for="person in people">
+        <div v-for="person in people" :key="person.id">
         <!-- index값이 필요할 경우 <div v-for="(person, index) in people"> -->
             {{ person.name }} {{ person.age }} <!-- {{ index }} -->
         </div>
@@ -34,9 +34,9 @@
             el: '#app',
             data: {
                people: [
-                {name: 'a1', age: 21},
-                {name: 'b2', age: 22},
-                {name: 'c3', age: 23},
+                {id: 1, name: 'a1', age: 21},
+                {id: 2, name: 'b2', age: 22},
+                {id: 3, name: 'c3', age: 23},
                ],
 
             },

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <script src="E:\Coding\Vue.js\vuejs2_basic_kossie_coder\vuejs2_component.js"></script> -->
+</head>
+
+<body>
+    변경될 텍스트 : <span id="text_name">{{ name }}</span>
+    <hr>
+    <div class="app">
+        <v-button></v-button>
+        <br>
+        <name-change></name-change>
+    </div>
+    <hr>
+
+    <script>
+        // 전역 컴포넌트----------------------------------
+        Vue.component('name-change', {
+            template: `
+                <div>
+                    'name-change' 컴포넌트로 만든 영역 <br>
+                    {{ guide }} -> <button type="button" @click="changeText()"> {{ click }} </button>
+                </div>
+            `,
+            data() {
+                return { 
+                    guide: 'smith!!!로 변경하기',
+                    click: '클릭'
+                }
+            },
+            methods: {
+                changeText() {
+                    instance0.name = 'smith!!!'
+                }
+            },
+        });
+
+        Vue.component('v-button', {
+            template: `
+                <div>
+                    'v-button' 컴포넌트로 만든 영역 <br>
+                    {{ guide }} -> <button type="button" @click="changeText()"> {{ click }} </button>
+                </div>
+                `,
+            data() {
+                return { 
+                    guide: '"smith 가자!"로 변경하기',
+                    click: '클릭'
+                }
+            },
+            methods: {
+                changeText() {
+                    instance0.name = 'smith 전화해!'
+                }
+            },
+        });
+
+
+        const instance0 = new Vue({
+            el: '#text_name',
+            data: {
+                name: 'sample text'
+            },
+        });
+
+        new Vue({
+            el: '.app'
+        });
+
+    </script>
+</body>
+
+</html>

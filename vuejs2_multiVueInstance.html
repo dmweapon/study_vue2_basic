@@ -20,6 +20,10 @@
     <script>
 
         const instance1 = new Vue({
+            el: '#app1',
+            data: {
+                name: 'sam',
+            },
             methods: {
                 changeText() {
                     this.name = 'smith'
@@ -30,7 +34,7 @@
         const instance2 = new Vue({
             el: '#app2',
             data: {
-                name: 'sam',
+                name2: 'sam',
             },
             methods: {
                 changeText() {
